@@ -109,7 +109,7 @@ def calc(user_input):
         else:
             index += 1
 
-    # clac * and /
+    # calc * and /
     index = 0
     while index < len(array):
         if array[index] == "*":
@@ -159,7 +159,7 @@ print("1. Type 'exit' to quit")
 print("2. Type the operation like (5+7/5*6)")
 print("3. to get root of number use number R number (ex: 2 R 25 = 5)")
 print("4. to get power pf number use number [P or ^] number (ex: 5 P 2 or 5^2 = 25)")
-print("CATION: nigative values for R or P may make problems avoid this calculator for this")
+print("CATION: nigative values for (root, power, sin, cos, tan) may make errors, void this calculator for this")
 print("5. now you can use sin(), cos(), tan() in operation like: 5+sin(30)*cos(45)")
 print("6. you can now use pi (ex: 2 * pi * 7)")
 
