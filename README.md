@@ -13,5 +13,5 @@ just clone this project and run the script `main.py` you do not need any librari
 - [x] TUI version
 - [ ] GUI verion
 - [ ] sin(), cos(), tan support
-- [ ] power and squer support
+- [x] power and squer support
 - [ ] add some consts like pi
