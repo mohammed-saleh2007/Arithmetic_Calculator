@@ -8,7 +8,7 @@ You do not need to define first and secound number, just enter the Question ike:
 just clone this project and run the script `main.py` ~~you do not need any libraries to be installed ~~, just latest version of python with math libs
 
 ### To Do
-- [ ] alert users from illegal inputs.
+- [x] alert users from illegal inputs.
 - [ ] CLI version
 - [x] TUI version
 - [ ] GUI verion
