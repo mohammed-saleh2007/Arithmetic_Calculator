@@ -3,12 +3,13 @@ import math
 def main():
     while True:
         userinput = input("> ")
+        if userinput == "": main()
         if userinput.lower() == "exit":
             print("Good Bye")
             break
         else:
             result = calc(userinput)
-            print("Result:", result)
+            print(result)
 
 def power(base, exponent):
     result = 1
@@ -26,10 +27,11 @@ def calc(user_input):
     operation = ""
     
     # check if input is legal
-    legal_list = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", ".", "p", "P", "i", "R", "(", ")", "s", "n", "c", "o", "t", "a", "+", "-", "*", "/", "^"]
+    legal_list = [" ", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", ".", "p", "P", "i", "R", "(", ")", "s", "n", "c", "o", "t", "a", "+", "-", "*", "/", "^", "e", "x"]
     for i in user_input:
         if i not in legal_list:
             print("illegal input detected!\nStop all operations")
+            print(i, "illegal")
             main()
 
     for i in user_input:
@@ -55,7 +57,7 @@ def calc(user_input):
     if operation:
         array.append(operation)
     
-    print("[DEBUGGING] Initial array:", array)
+    # print("[DEBUGGING] Initial array:", array)
 
     # replace pi
     index = 0
