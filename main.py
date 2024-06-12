@@ -1,5 +1,15 @@
 import math
 
+def main():
+    while True:
+        userinput = input("> ")
+        if userinput.lower() == "exit":
+            print("Good Bye")
+            break
+        else:
+            result = calc(userinput)
+            print("Result:", result)
+
 def power(base, exponent):
     result = 1
     exponent = int(exponent)
@@ -14,6 +24,13 @@ def calc(user_input):
     array = []
     number = ""
     operation = ""
+    
+    # check if input is legal
+    legal_list = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", ".", "p", "P", "i", "R", "(", ")", "s", "n", "c", "o", "t", "a", "+", "-", "*", "/", "^"]
+    for i in user_input:
+        if i not in legal_list:
+            print("illegal input detected!\nStop all operations")
+            main()
 
     for i in user_input:
         if i.isdigit() or i == ".":
@@ -25,9 +42,13 @@ def calc(user_input):
             if number:
                 array.append(float(number))
                 number = ""
-            if i != " ":
-                operation += i
-    
+            if i == "+" or i == "-" or i == "*" or i == "/":
+                if operation:
+                    array.append(operation)
+                    operation = ""
+                array.append(i)
+            elif i != " ":
+                operation += i    
     if number:
         array.append(float(number))
     
@@ -36,6 +57,16 @@ def calc(user_input):
     
     print("[DEBUGGING] Initial array:", array)
 
+    # replace pi
+    index = 0
+    while index < len(array):
+        if array[index] == "pi":
+            product = 3.14159265358979323846
+            array[index] = product
+        else:
+            index += 1
+
+    # calc power and root
     index = 0
     while index < len(array):
         if array[index] == "^" or array[index] == "P":
@@ -55,7 +86,28 @@ def calc(user_input):
         else:
             index += 1
 
+    # calc sin, cos and tan
+    index = 0
+    while index < len(array):
+        if array[index] == "sin(":
+            angle = array[index + 1]
+            product = math.sin(math.radians(angle))
+            array[index] = product
+            del array[index+1:index + 3] 
+        if array[index] == "cos(":
+            angle = array[index + 1]
+            product = math.cos(math.radians(angle))
+            array[index] = product
+            del array[index+1:index + 3] 
+        if array[index] == "tan(":
+            angle = array[index + 1]
+            product = math.tan(math.radians(angle))
+            array[index] = product
+            del array[index+1:index + 3] 
+        else:
+            index += 1
 
+    # clac * and /
     index = 0
     while index < len(array):
         if array[index] == "*":
@@ -77,7 +129,7 @@ def calc(user_input):
             del array[index:index + 2] 
         else:
             index += 1
-
+    # calc + and -
     index = 0
     while index < len(array):
         if array[index] == "+":
@@ -105,12 +157,8 @@ print("1. Type 'exit' to quit")
 print("2. Type the operation like (5+7/5*6)")
 print("3. to get root of number use number R number (ex: 2 R 25 = 5)")
 print("4. to get power pf number use number [P or ^] number (ex: 5 P 2 or 5^2 = 25)")
+print("CATION: nigative values for R or P may make problems avoid this calculator for this")
+print("5. now you can use sin(), cos(), tan() in operation like: 5+sin(30)*cos(45)")
+print("6. you can now use pi (ex: 2 * pi * 7)")
 
-while True:
-    userinput = input("> ")
-    if userinput.lower() == "exit":
-        print("Good Bye")
-        break
-    else:
-        result = calc(userinput)
-        print("Result:", result)
+main()
